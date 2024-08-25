@@ -60,8 +60,8 @@ const Earthmoon = () => {
 
   // Add objects to scene
   scene.add( light1);
-  //scene.add(PointLight, ambientLight)
-  scene.add(gridHelper)
+  // scene.add(PointLight, ambientLight)
+  // scene.add(gridHelper)
   scene.add(earth, moon)
   // scene.add(earth, moon)
 
