@@ -17,11 +17,11 @@ const BigDataClub = () => {
   // * SCENE
   const scene = new THREE.Scene();
 	scene.background = new THREE.Color( 0x000000 );
-	scene.fog = new THREE.Fog( 0x000000, 100, 200 );
+	scene.fog = new THREE.Fog( 0x000000, 100, 180 );
 
   // * CAMERA
-  const camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 1, 200)
-  camera.position.set(0, 30, 120)
+  const camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 1, 200)
+  camera.position.set(10, 20, 110)
   
   // * RENDERER
   const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('earth') })
@@ -178,7 +178,6 @@ const BigDataClub = () => {
 
   return (
     <div>
-      Big Data Club
     </div>
   )
 }
