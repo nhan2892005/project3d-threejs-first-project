@@ -20,7 +20,7 @@ const BigDataClub = () => {
 	scene.fog = new THREE.Fog( 0x000000, 100, 180 );
 
   // * CAMERA
-  const camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 1, 200)
+  const camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 1, 200)
   camera.position.set(10, 20, 110)
   
   // * RENDERER
@@ -30,7 +30,7 @@ const BigDataClub = () => {
 
   // * LIGHTS
   const sphere = new THREE.SphereGeometry( 0.3, 10, 8 );
-  const dirLight = new THREE.DirectionalLight( 0xfefdf0, 1 );
+  const dirLight = new THREE.DirectionalLight( 0xfefdf0, 10 );
 	dirLight.position.set( 0, 0, 1 ).normalize();
 	scene.add( dirLight );
 
@@ -38,8 +38,6 @@ const BigDataClub = () => {
 	pointLight.color.setHSL( Math.random(), 1, 0.5 );
 	pointLight.position.set( 0, 100, 90 );
 	scene.add( pointLight );
-
-  const arrPointLights = [0xff0040, 0x0040ff, 0x80ff80, 0xffaa00]
 
   const light1 = new THREE.PointLight( 0xff0040, 400 );
 	light1.add( new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: 0xff0040 } ) ) );
@@ -149,6 +147,18 @@ const BigDataClub = () => {
   scene.add(textGroup)
   scene.add(plane)
 
+  let isRotating = true;
+
+  window.addEventListener('keydown', (event) => {
+    if (event.code === 'Space') {
+      isRotating = !isRotating;
+      if (!isRotating) {
+        logo.rotation.y = 0;
+      }
+    }
+  });
+
+
   // ANIMATION LOOP
   const animate = () => {
     requestAnimationFrame(animate)
@@ -168,6 +178,10 @@ const BigDataClub = () => {
 		light4.position.x = Math.sin( time * 0.3 ) * 20;
 		light4.position.y = Math.cos( time * 0.7 ) * 10;
 		light4.position.z = Math.sin( time * 0.5 ) * 15;
+
+    if (isRotating) {
+      logo.rotation.y += 0.01;
+    }
 
     controls.update()
 
